@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>COVID-19 Coronavirus Tracker</title>
+	<!-- Google Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&display=swap">
+	<!-- Font Awesome icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="../static/css/bootstrap4-wizardry.css" th:href="@{/css/bootstrap4-wizardry.css}">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body class="nunito">	
+	<div class="blue-gradient container mt-3 text-center header jumbotron">
+		<span class="display-4 nunito">COVID-19 Coronavirus Tracker</span>
+		<div class="mt-2" id="cite">GitHub repository and source code <a class="link" href="https://github.com/panesar1810/covid-19-tracker" target="_blank">here</a></div>
+	</div>
+
+	<div class="nunito container text-center my-4">
+		<div class="row h2 text-primary">
+			<span class="col-md-4">Total Cases : <span class="text-custom" th:text="${global.cases}">808080</span></span>
+			<span class="col-md-4">Total Deaths : <span class="text-danger" th:text="${global.deaths}">808080</span></span>
+			<span class="col-md-4">Death Rate : <span class="text-custom" th:text="${deathRate}+'%'">80%</span></span>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<form action="/country" class="input-group" method="POST">
+					<input type="text" class="form-control text-custom" name="country" id="country" placeholder="Search for Country . . .">
+					<div class="input-group-append">
+						<button type="submit" class="btn bg-primary text-white"><i class="fas fa-search"></i></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="container mt-3">
+		<div class="table-responsive">
+			<table class="table text-center" id="data-table">
+				<tr class="table-heading text-custom">
+					<td class="text-left">Country</td>
+					<td>Cases</td>
+					<td>Today Cases</td>
+					<td class="deaths text-danger">Deaths</td>
+					<td>Today Deaths</td>
+					<td>Active Cases</td>
+					<td class="recovered text-success">Recovered</td>
+					<td>Details</td>
+				</tr>
+				<tr th:each="d : ${data}">
+					<td th:text="${d.country}" class="text-left">Country</td>                      
+					<td th:text="${d.cases}">Cases</td>                          
+					<td th:text="${d.todayCases}">Today cases</td>               
+					<td th:text="${d.deaths}" class="deaths text-danger">Deaths</td>         
+					<td th:text="${d.todayDeaths}">Today Deaths</td>    
+					<td th:text="${d.active}"></td>         
+					<td th:text="${d.recovered}" class="recovered text-success">Recovered</td>
+					<td><a class="text-primary" href="#" th:href="@{details/{country}(country=${d.country})}">Details</a></td>                        
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

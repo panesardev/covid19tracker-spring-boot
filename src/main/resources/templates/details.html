@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Country Details</title>
+	<!-- Google Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&display=swap">
+	<!-- Font Awesome icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="../static/css/bootstrap4-wizardry.css" th:href="@{/css/bootstrap4-wizardry.css}">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body class="nunito">
+	<div class="container mt-3">
+		<div class="text-primary table-responsive">
+			<img th:src="@{${flagURL}}" height="70" width="120" class="float-right">
+			<h1 class="display-1 nunito"><span th:text="${country.country}">Country</span></h1>
+			<h2 class="text-success">Stay Home Stay Safe</h2>
+			<table class="table">
+				<tr>
+					<td>Total Cases: </td>
+					<td th:text="${country.cases}">808080</td>
+				</tr>
+				<tr>
+					<td>Today Cases: </td>
+					<td th:text="${country.todayCases}">808080</td>
+				</tr>
+				<tr class="deaths text-danger">
+					<td>Total Deaths: </td>
+					<td th:text="${country.deaths}">808080</td>
+				</tr>
+				<tr>
+					<td>Today Deaths: </td>
+					<td th:text="${country.todayDeaths}">808080</td>
+				</tr>
+				<tr class="recovered text-success">
+					<td>Total Recovered: </td>
+					<td th:text="${country.recovered}">808080</td>
+				</tr>
+				<tr>
+					<td>Critical Cases: </td>
+					<td th:text="${country.critical}">808080</td>
+				</tr>
+				<tr>
+					<td>Active Cases: </td>
+					<td th:text="${country.active}">808080</td>
+				</tr>
+				<tr>
+					<td>Total Cases Per 1 Million: </td>
+					<td th:text="${country.casesPerOneMillion}">808080</td>
+				</tr>
+				<tr>
+					<td>Total Deaths Per 1 Million: </td>
+					<td th:text="${country.deathsPerOneMillion}">808080</td>
+				</tr>
+				<tr>
+					<td>Total Tests: </td>
+					<td th:text="${country.tests}">808080</td>
+				</tr>
+				<tr>
+					<td>Total Tests Per 1 Million: </td>
+					<td th:text="${country.testsPerOneMillion}">808080</td>
+				</tr>
+				<a href="/" class="btn btn-sm bg-primary text-white my-3">Go Home</a>
+			</table>
+		</div>
+	</div>
+	<!-- Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
